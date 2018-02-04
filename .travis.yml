@@ -1,0 +1,41 @@
+language: csharp
+solution: Bubbio.sln
+
+branches:
+  only:
+    - master
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: false
+      mono: none
+      dotnet: 2.0.3
+      env: DOTNETCORE=1
+
+before_install:
+  - chmod +x ./scripts/*.sh
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then ulimit -n 1024; fi
+install:
+  - ./scripts/install.sh
+before_script:
+  - ./scripts/clean.sh
+script:
+  - ./scripts/build.sh
+  - ./scripts/test.sh
+after_success:
+  - ./scripts/pack.sh
+deploy:
+  provider: script
+  script: ./scripts/push.sh
+  on:
+    branch: master
+  skip_cleanup: true
+after_script:
+  - ./scripts/clean.sh
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
