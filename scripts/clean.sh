@@ -1,8 +1,7 @@
 #!/bin/bash
-set -e
+source ./scripts/constants.sh
 
-ARTIFACTS=./artifacts
-TOOLS=./tools
+set -e
 
 echo -e "\n*****************\nCLEANING SOLUTION\n*****************\n"
 dotnet clean --configuration Release

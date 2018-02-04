@@ -1,7 +1,7 @@
 #!/bin/bash
-set -e
+source ./scripts/constants.sh
 
-NUGET=./tools/nuget.exe
+set -e
 
 # install tools here, not doing this atm, installing mono takes too long
 
