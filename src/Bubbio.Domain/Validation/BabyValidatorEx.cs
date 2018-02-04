@@ -1,11 +1,10 @@
 ﻿using System;
-using Bubbio.Core;
 using Bubbio.Core.Validation;
 using Bubbio.Domain.Types;
 
-namespace Bubbio.Domain
+namespace Bubbio.Domain.Validation
 {
-    public static class ValidationEx
+    public static class BabyValidatorEx
     {
         public static Baby Validate(this Baby baby)
         {
