@@ -1,7 +1,8 @@
 #!/bin/bash
+source ./scripts/constants.sh
+
 set -e
 
-TEST_SUFFIX=".Tests.csproj"
 COVERALLS=./tools/coveralls.net.0.7.0/tools/csmacnz.Coveralls.exe
 
 # only execute dotnet test on test projects
