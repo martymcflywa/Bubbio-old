@@ -39,3 +39,8 @@ notifications:
   email:
     on_success: change
     on_failure: always
+  slack: 
+    rooms:
+      bruhritto:rwPNGKj7k0mNAjMb37U7MJVp#bubbio
+    on_success: always
+    on_failure: always
