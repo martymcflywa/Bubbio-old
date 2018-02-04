@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Bubbio.Core;
 using Bubbio.Core.Events;
 using Bubbio.Core.Events.Enums;
@@ -27,9 +25,7 @@ namespace Bubbio.Domain.Validation
             var lastEvent = (ITransitionEvent) await _repository.GetLastEventAsync(@event.BabyId, @event.EventType);
 
             if (@event.Transition.Equals(Transition.Start))
-            {
                 return lastEvent == null || lastEvent.Transition.Equals(Transition.End);
-            }
 
             return lastEvent != null && lastEvent.Transition.Equals(Transition.Start);
         }

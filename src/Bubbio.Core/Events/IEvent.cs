@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bubbio.Core
+namespace Bubbio.Core.Events
 {
     public interface IEvent
     {

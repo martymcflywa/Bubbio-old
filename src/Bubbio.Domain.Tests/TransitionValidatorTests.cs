@@ -1,5 +1,4 @@
 ﻿using System;
-using Bubbio.Core;
 using Bubbio.Core.Events;
 using Bubbio.Core.Events.Enums;
 using Bubbio.Domain.Tests.Scenarios;

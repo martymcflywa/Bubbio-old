@@ -1,4 +1,4 @@
-﻿namespace Bubbio.Domain.Types
+﻿namespace Bubbio.Core.Types
 {
     public enum Gender
     {

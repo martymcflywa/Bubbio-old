@@ -1,7 +1,7 @@
 ﻿using System;
+using Bubbio.Core.Types;
 using Bubbio.Domain.Tests.Examples;
 using Bubbio.Domain.Tests.Scenarios;
-using Bubbio.Domain.Types;
 using Bubbio.Domain.Validation;
 using TestStack.BDDfy;
 using Xunit;
