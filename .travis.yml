@@ -26,9 +26,7 @@ script:
   - ./scripts/test.sh
 deploy:
   provider: script
-  script:
-    - ./scripts/pack.sh
-    - ./scripts/push.sh
+  script: ./scripts/push.sh
   on:
     branch: master
   skip_cleanup: true

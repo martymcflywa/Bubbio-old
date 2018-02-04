@@ -1,5 +1,6 @@
 #!/bin/bash
 source ./scripts/constants.sh
+source ./scripts/pack.sh
 
 set -e
 
