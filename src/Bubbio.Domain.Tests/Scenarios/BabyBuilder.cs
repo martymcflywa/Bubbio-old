@@ -1,5 +1,5 @@
 ﻿using System;
-using Bubbio.Domain.Types;
+using Bubbio.Core.Types;
 
 namespace Bubbio.Domain.Tests.Scenarios
 {

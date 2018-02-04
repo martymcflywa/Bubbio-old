@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bubbio.Domain.Types
+namespace Bubbio.Core.Types
 {
     public class Baby
     {

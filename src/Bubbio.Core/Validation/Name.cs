@@ -100,13 +100,9 @@ namespace Bubbio.Core.Validation
                 return name.ToUpper();
 
             if (name.ToLower().StartsWith("mc") && name.Length > 2)
-            {
                 name = "Mc" + name[2].ToString().ToUpper() + name.Substring(3).ToLower();
-            }
             else
-            {
                 name = name[0].ToString().ToUpper() + name.Substring(1).ToLower();
-            }
             return name;
         }
 
