@@ -15,6 +15,7 @@ namespace Bubbio.Domain.Tests.Examples
             {"mclowercase", "McLowercase"},
             {"d'arcy", "D'Arcy"},
             {"lee'", "Lee"},
+            {"name with spaces", "Name With Spaces"}
         };
 
         public static ExampleTable Invalid => new ExampleTable(Pre, Post)
