@@ -24,11 +24,11 @@ before_script:
 script:
   - ./scripts/build.sh
   - ./scripts/test.sh
-after_success:
-  - ./scripts/pack.sh
 deploy:
   provider: script
-  script: ./scripts/push.sh
+  script:
+    - ./scripts/pack.sh
+    - ./scripts/push.sh
   on:
     branch: master
   skip_cleanup: true
