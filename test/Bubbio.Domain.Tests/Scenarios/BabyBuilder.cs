@@ -40,12 +40,6 @@ namespace Bubbio.Domain.Tests.Scenarios
             return this;
         }
 
-        public BabyBuilder WithDateOfBirth(DateTime dateOfBirth)
-        {
-            _baby.DateOfBirth = dateOfBirth;
-            return this;
-        }
-
         public Baby Build()
         {
             return _baby;

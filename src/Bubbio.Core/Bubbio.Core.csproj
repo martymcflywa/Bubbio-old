@@ -10,7 +10,4 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsNotAsErrors>612,618,1591</WarningsNotAsErrors>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="Validation" />
-  </ItemGroup>
 </Project>

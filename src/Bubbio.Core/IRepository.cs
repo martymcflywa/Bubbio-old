@@ -7,7 +7,9 @@ namespace Bubbio.Core
 {
     public interface IRepository
     {
-        Task<IEnumerable<IEvent>> GetEventsAsync(Guid babyId);
-        Task<IEvent> GetLastEventAsync(Guid babyId, EventType eventType);
+        Task BatchInsertAsync(IEnumerable<IEvent> events);
+        Task InsertAsync(IEvent @event);
+        Task<IEnumerable<IEvent>> BatchGetAsync(Guid babyId);
+        Task<IEvent> GetLastAsync(Guid babyId, EventType eventType);
     }
 }

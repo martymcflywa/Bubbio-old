@@ -11,22 +11,39 @@ namespace Bubbio.Domain.Tests.Scenarios
     {
         private readonly List<IEvent> _events = new List<IEvent>();
 
-        public Task<IEnumerable<IEvent>> GetEventsAsync(Guid babyId)
+        public Task BatchInsertAsync(IEnumerable<IEvent> events)
         {
-            return Task.FromResult(_events
-                .Where(e => e.BabyId.ToString().Equals(babyId.ToString())));
+            _events.AddRange(events);
+            return Task.CompletedTask;
         }
 
-        public Task<IEvent> GetLastEventAsync(Guid babyId, EventType eventType)
+        public Task InsertAsync(IEvent @event)
+        {
+            _events.Add(@event);
+            return Task.CompletedTask;
+        }
+
+        public Task<IEnumerable<IEvent>> BatchGetAsync(Guid babyId)
         {
             return Task.FromResult(_events
-                .Where(e => e.BabyId.ToString().Equals(babyId.ToString()))
+                .Where(e => e.BabyId.Equals(babyId)));
+        }
+
+        public Task<IEvent> GetLastAsync(Guid babyId, EventType eventType)
+        {
+            return Task.FromResult(_events
+                .Where(e => e.BabyId.Equals(babyId))
                 .LastOrDefault(e => e.EventType.Equals(eventType)));
         }
 
         public void Has(IEvent @event)
         {
-            _events.Add(@event);
+            InsertAsync(@event);
+        }
+
+        public void Has(IEnumerable<IEvent> events)
+        {
+            BatchInsertAsync(events);
         }
 
         public void IsEmpty()

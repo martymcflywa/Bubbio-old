@@ -22,7 +22,7 @@ namespace Bubbio.Domain.Validation
         public async Task<bool> IsValidAsync(ITransitionEvent @event)
         {
             // TODO: How about caching a set of last events in memory? Use resolver to lookup memory first.
-            var lastEvent = (ITransitionEvent) await _repository.GetLastEventAsync(@event.BabyId, @event.EventType);
+            var lastEvent = (ITransitionEvent) await _repository.GetLastAsync(@event.BabyId, @event.EventType);
 
             if (@event.Transition.Equals(Transition.Start))
                 return lastEvent == null || lastEvent.Transition.Equals(Transition.End);
