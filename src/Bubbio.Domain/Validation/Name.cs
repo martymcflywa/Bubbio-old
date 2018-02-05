@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Bubbio.Core.Validation
+namespace Bubbio.Domain.Validation
 {
     public static class Name
     {

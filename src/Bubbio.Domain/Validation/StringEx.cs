@@ -1,4 +1,4 @@
-﻿namespace Bubbio.Core.Validation
+﻿namespace Bubbio.Domain.Validation
 {
     public static class StringEx
     {
