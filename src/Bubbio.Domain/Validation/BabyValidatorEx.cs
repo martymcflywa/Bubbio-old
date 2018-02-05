@@ -1,6 +1,5 @@
 ﻿using System;
 using Bubbio.Core.Types;
-using Bubbio.Core.Validation;
 
 namespace Bubbio.Domain.Validation
 {
