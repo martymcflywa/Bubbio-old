@@ -442,4 +442,9 @@ __pycache__/
 # By default, sensitive information, such as encrypted password
 # should be stored in the .pubxml.user file.
 
+### minicover ###
+coverage-html
+coverage.json
+coverage-hits.txt
+
 # End of https://www.gitignore.io/api/macos,linux,windows,jetbrains,visualstudio,visualstudiocode
