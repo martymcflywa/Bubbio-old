@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Bubbio.Persist.Mongo</AssemblyName>
+    <RootNamespace>Bubbio.Persist.Mongo</RootNamespace>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bubbio.Core\Bubbio.Core.csproj" />

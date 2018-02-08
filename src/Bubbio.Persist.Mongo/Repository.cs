@@ -5,7 +5,7 @@ using Bubbio.Core;
 using Bubbio.Core.Events;
 using MongoDB.Driver;
 
-namespace Bubbio.Db.Mongo
+namespace Bubbio.Persist.Mongo
 {
     public sealed class Repository : IRepository
     {
