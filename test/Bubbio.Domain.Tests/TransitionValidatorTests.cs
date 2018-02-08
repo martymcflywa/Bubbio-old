@@ -78,28 +78,28 @@ namespace Bubbio.Domain.Tests
         private bool IsAccepted { get; set; }
         private static readonly Guid BabyId = Guid.NewGuid();
 
-        private static BottleFeedEvent Start => new BottleFeedEvent
+        private static BottleFeed Start => new BottleFeed
         {
             BabyId = BabyId,
             EventType = EventType.Feed,
             Transition = Transition.Start
         };
 
-        private static BottleFeedEvent End => new BottleFeedEvent
+        private static BottleFeed End => new BottleFeed
         {
             BabyId = BabyId,
             EventType = EventType.Feed,
             Transition = Transition.End
         };
 
-        private static TummyTimeEvent UnrelatedStart => new TummyTimeEvent
+        private static TummyTime UnrelatedStart => new TummyTime
         {
             BabyId = BabyId,
             EventType = EventType.TummyTime,
             Transition = Transition.Start
         };
 
-        private static TummyTimeEvent UnrelatedEnd => new TummyTimeEvent
+        private static TummyTime UnrelatedEnd => new TummyTime
         {
             BabyId = BabyId,
             EventType = EventType.TummyTime,
@@ -116,7 +116,7 @@ namespace Bubbio.Domain.Tests
             _testRepository.IsEmpty();
         }
 
-        private void EventIsValidated(ITransitionEvent @event)
+        private void EventIsValidated(ITransition @event)
         {
             Validator = new TransitionValidator(_testRepository);
             IsAccepted = Validator.IsValidAsync(@event).Result;

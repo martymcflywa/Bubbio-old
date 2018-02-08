@@ -1,4 +1,5 @@
 ﻿using System;
+using Bubbio.Core.Events.Enums;
 
 namespace Bubbio.Core.Events
 {

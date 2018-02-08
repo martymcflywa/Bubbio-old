@@ -3,13 +3,12 @@ using Bubbio.Core.Events.Enums;
 
 namespace Bubbio.Core.Events
 {
-    public class BottleFeedEvent : ITransitionEvent
+    public class HeightUpdate : IEvent, IMeasurement
     {
         public Guid EventId { get; set; }
         public Guid BabyId { get; set; }
         public DateTimeOffset Timestamp { get; set; }
         public EventType EventType { get; set; }
-        public Transition Transition { get; set; }
-        public int Amount { get; set; }
+        public float Value { get; set; }
     }
 }

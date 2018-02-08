@@ -3,7 +3,7 @@ using Bubbio.Core.Events.Enums;
 
 namespace Bubbio.Core.Events
 {
-    public class TummyTimeEvent : ITransitionEvent
+    public class TummyTime : ITransition
     {
         public Guid EventId { get; set; }
         public Guid BabyId { get; set; }

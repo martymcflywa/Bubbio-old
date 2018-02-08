@@ -1,4 +1,4 @@
-﻿namespace Bubbio.Core.Events
+﻿namespace Bubbio.Core.Events.Enums
 {
     public enum EventType
     {

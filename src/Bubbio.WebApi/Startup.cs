@@ -18,6 +18,7 @@ namespace Bubbio.WebApi
         private IConfiguration Configuration { get; set; }
         private string _connectionString;
         private string _schema;
+        private string _collection;
 
         public Startup(IConfiguration configuration)
         {
@@ -28,6 +29,7 @@ namespace Bubbio.WebApi
         {
             var connectionString = configuration["ConnectionString"];
             var schema = configuration["Schema"];
+            var collection = configuration["Collection"];
 
             if(string.IsNullOrWhiteSpace(connectionString))
                 throw new InvalidOperationException("ConnectionString required in appsettings.json");
@@ -35,16 +37,20 @@ namespace Bubbio.WebApi
             if(string.IsNullOrWhiteSpace(schema))
                 throw new InvalidOperationException("Schema required in appsettings.json");
 
+            if(string.IsNullOrWhiteSpace(collection))
+                throw new InvalidOperationException("Collection required in appsettings.json");
+
             Configuration = configuration;
             _connectionString = connectionString;
             _schema = schema;
+            _collection = collection;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IRepository>(s => new Repository(_connectionString, _schema));
+            services.AddTransient<IRepository>(s => new Repository(_connectionString, _schema, _collection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

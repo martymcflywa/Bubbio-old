@@ -2,7 +2,7 @@
 
 namespace Bubbio.Core.Events
 {
-    public interface ITransitionEvent : IEvent
+    public interface ITransition : IEvent
     {
         Transition Transition { get; set; }
     }

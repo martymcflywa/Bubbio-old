@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bubbio.Core;
 using Bubbio.Core.Events;
+using Bubbio.Core.Events.Enums;
 
 namespace Bubbio.Domain.Tests.Scenarios
 {
