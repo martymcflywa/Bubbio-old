@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Bubbio.Domain.Tests
 {
-    public class TransitionValidatorTests : TransitionValidatorTestBase
+    public class EventValidatorTests : EventValidatorTestBase
     {
         [Fact]
         public void StartEventWithRelatedEndEvent()

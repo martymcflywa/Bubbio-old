@@ -24,7 +24,7 @@ namespace Bubbio.WebApi.Tests.Scenarios
         protected RepositoryControllerTestBase()
         {
             _repository = new TestRepository();
-            IValidate validator = new TransitionValidator(_repository);
+            IValidate validator = new EventValidator(_repository);
             _controller = new RepositoryController(_repository, validator);
         }
 
