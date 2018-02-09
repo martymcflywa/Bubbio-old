@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Bubbio.Domain.Tests</AssemblyName>
-    <RootNamespace>Bubbio.Domain.Tests</RootNamespace>
+    <AssemblyName>Bubbio.WebApi.Tests</AssemblyName>
+    <RootNamespace>Bubbio.WebApi.Tests</RootNamespace>
     <LangVersion>latest</LangVersion>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -14,7 +14,8 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Bubbio.Domain\Bubbio.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Bubbio.Core\Bubbio.Core.csproj" />
+    <ProjectReference Include="..\..\src\Bubbio.WebApi\Bubbio.WebApi.csproj" />
     <ProjectReference Include="..\Bubbio.Tests.Core\Bubbio.Tests.Core.csproj" />
   </ItemGroup>
 </Project>

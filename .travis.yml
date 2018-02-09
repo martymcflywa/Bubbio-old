@@ -19,8 +19,6 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then ulimit -n 1024; fi
 install:
   - ./scripts/install.sh
-before_script:
-  - ./scripts/clean.sh
 script:
   - ./scripts/build.sh
   - ./scripts/setupcover.sh
@@ -32,8 +30,6 @@ deploy:
   on:
     branch: master
   skip_cleanup: true
-after_script:
-  - ./scripts/clean.sh
 
 notifications:
   email:

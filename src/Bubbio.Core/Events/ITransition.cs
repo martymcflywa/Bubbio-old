@@ -1,8 +1,10 @@
 ﻿using Bubbio.Core.Events.Enums;
+using Newtonsoft.Json;
 
 namespace Bubbio.Core.Events
 {
-    public interface ITransitionEvent : IEvent
+    [JsonConverter(typeof(EventJsonDeserializer))]
+    public interface ITransition : IEvent
     {
         Transition Transition { get; set; }
     }

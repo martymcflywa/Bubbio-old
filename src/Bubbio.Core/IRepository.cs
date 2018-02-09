@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bubbio.Core.Events;
+using Bubbio.Core.Events.Enums;
 
 namespace Bubbio.Core
 {

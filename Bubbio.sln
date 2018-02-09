@@ -11,7 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bubbio.Domain.Tests", "test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tools", "tools\tools.csproj", "{E8F7E324-0FF3-4193-A033-004975FEE2B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bubbio.Db.Mongo", "src\Bubbio.Db.Mongo\Bubbio.Db.Mongo.csproj", "{1CC7B925-C48A-46C4-B74D-5BA30B6EF36A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bubbio.Persist.Mongo", "src\Bubbio.Persist.Mongo\Bubbio.Persist.Mongo.csproj", "{1CC7B925-C48A-46C4-B74D-5BA30B6EF36A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bubbio.Tests.Core", "test\Bubbio.Tests.Core\Bubbio.Tests.Core.csproj", "{4AB046E9-ABCA-4A02-9CCD-2A9110F6D6A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bubbio.WebApi.Tests", "test\Bubbio.WebApi.Tests\Bubbio.WebApi.Tests.csproj", "{10784B3C-7AF7-4540-A33B-42D459FC9508}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,5 +47,13 @@ Global
 		{1CC7B925-C48A-46C4-B74D-5BA30B6EF36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CC7B925-C48A-46C4-B74D-5BA30B6EF36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CC7B925-C48A-46C4-B74D-5BA30B6EF36A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AB046E9-ABCA-4A02-9CCD-2A9110F6D6A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AB046E9-ABCA-4A02-9CCD-2A9110F6D6A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AB046E9-ABCA-4A02-9CCD-2A9110F6D6A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AB046E9-ABCA-4A02-9CCD-2A9110F6D6A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10784B3C-7AF7-4540-A33B-42D459FC9508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10784B3C-7AF7-4540-A33B-42D459FC9508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10784B3C-7AF7-4540-A33B-42D459FC9508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10784B3C-7AF7-4540-A33B-42D459FC9508}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
