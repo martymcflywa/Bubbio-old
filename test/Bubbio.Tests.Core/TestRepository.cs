@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Bubbio.Core;
 using Bubbio.Core.Events;
 using Bubbio.Core.Events.Enums;
+using Xunit;
 
 namespace Bubbio.Tests.Core
 {
@@ -39,17 +40,29 @@ namespace Bubbio.Tests.Core
 
         public void Has(IEvent @event)
         {
-            InsertAsync(@event);
-        }
-
-        public void Has(IEnumerable<IEvent> events)
-        {
-            BatchInsertAsync(events);
+            Assert.Equal(@event, _events.SingleOrDefault(), new EventComparer());
         }
 
         public void IsEmpty()
         {
             _events.Clear();
+        }
+
+        private class EventComparer : IEqualityComparer<IEvent>
+        {
+            public bool Equals(IEvent x, IEvent y)
+            {
+                return x.SequenceId.Equals(y.SequenceId)
+                       && x.EventId.ToString().Equals(y.EventId.ToString())
+                       && x.BabyId.ToString().Equals(y.BabyId.ToString())
+                       && x.EventType.Equals(y.EventType)
+                       && x.Timestamp.Equals(y.Timestamp);
+            }
+
+            public int GetHashCode(IEvent obj)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

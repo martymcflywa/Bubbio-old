@@ -44,7 +44,7 @@ namespace Bubbio.Domain.Tests.Scenarios
 
         protected void RepositoryHas(IEvent @event)
         {
-            _testRepository.Has(@event);
+            _testRepository.InsertAsync(@event);
         }
 
         protected void RepositoryIsEmpty()

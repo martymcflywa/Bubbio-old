@@ -24,7 +24,7 @@ namespace Bubbio.Core
         public override object ReadJson(JsonReader reader, Type type, object existingValue, JsonSerializer serializer)
         {
             var jObject = JObject.Load(reader);
-            var eventType = jObject[nameof(IEvent.EventType)].Value<EventType>();
+            var eventType = (EventType) jObject[nameof(IEvent.EventType)].Value<int>();
             IEvent @event;
 
             switch (eventType)
