@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Bubbio.Domain</AssemblyName>
+    <RootNamespace>Bubbio.Domain</RootNamespace>
     <VersionPrefix>0.0.0</VersionPrefix>
     <VersionSuffix>prealpha</VersionSuffix>
     <LangVersion>latest</LangVersion>
