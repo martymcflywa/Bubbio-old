@@ -21,9 +21,9 @@ install:
   - ./scripts/install.sh
 script:
   - ./scripts/build.sh
-  #- ./scripts/setupcover.sh
+  - ./scripts/setupcover.sh
   - ./scripts/test.sh
-  #- ./scripts/checkcover.sh
+  - ./scripts/checkcover.sh
 deploy:
   provider: script
   script: ./scripts/push.sh
