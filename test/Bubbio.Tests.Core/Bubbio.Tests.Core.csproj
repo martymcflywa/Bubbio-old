@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Bubbio.Core\Bubbio.Core.csproj">
+      <Project>{E11B7D18-EF57-4FFF-9A26-D60969FCB7EB}</Project>
+      <Name>Bubbio.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

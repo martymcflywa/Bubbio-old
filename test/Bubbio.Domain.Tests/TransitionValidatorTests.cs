@@ -1,8 +1,8 @@
 ﻿using System;
 using Bubbio.Core.Events;
 using Bubbio.Core.Events.Enums;
-using Bubbio.Domain.Tests.Scenarios;
 using Bubbio.Domain.Validation;
+using Bubbio.Tests.Core;
 using TestStack.BDDfy;
 using Xunit;
 
@@ -81,14 +81,14 @@ namespace Bubbio.Domain.Tests
         private static BottleFeed Start => new BottleFeed
         {
             BabyId = BabyId,
-            EventType = EventType.Feed,
+            EventType = EventType.BottleFeed,
             Transition = Transition.Start
         };
 
         private static BottleFeed End => new BottleFeed
         {
             BabyId = BabyId,
-            EventType = EventType.Feed,
+            EventType = EventType.BottleFeed,
             Transition = Transition.End
         };
 

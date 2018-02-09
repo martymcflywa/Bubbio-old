@@ -16,5 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Bubbio.Domain\Bubbio.Domain.csproj" />
+    <ProjectReference Include="..\Bubbio.Tests.Core\Bubbio.Tests.Core.csproj" />
   </ItemGroup>
 </Project>

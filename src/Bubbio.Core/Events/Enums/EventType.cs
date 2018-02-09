@@ -3,9 +3,10 @@
     public enum EventType
     {
         Sleep = 1,
-        Feed = 2,
-        TummyTime = 3,
-        WeightUpdate = 4,
-        HeightUpdate = 5
+        BottleFeed = 2,
+        BreastFeed = 3,
+        TummyTime = 4,
+        WeightUpdate = 5,
+        HeightUpdate = 6
     }
 }

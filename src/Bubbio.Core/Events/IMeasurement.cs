@@ -1,6 +1,9 @@
-﻿namespace Bubbio.Core.Events
+﻿using Newtonsoft.Json;
+
+namespace Bubbio.Core.Events
 {
-    public interface IMeasurement
+    [JsonConverter(typeof(EventJsonDeserializer))]
+    public interface IMeasurement : IEvent
     {
         float Value { get; set; }
     }

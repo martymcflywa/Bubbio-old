@@ -10,6 +10,8 @@ namespace Bubbio.Persist.Mongo.Maps
     [BsonKnownTypes(typeof(Sleep))]
     public class SleepMap : IMongoClassMap
     {
+        public long SequenceId { get; set; }
+
         [BsonId]
         public Guid EventId { get; set; }
         public Guid BabyId { get; set; }

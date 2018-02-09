@@ -5,7 +5,7 @@ using Bubbio.Core.Events.Enums;
 
 namespace Bubbio.Domain.Validation
 {
-    internal sealed class TransitionValidator
+    public sealed class TransitionValidator : IValidate
     {
         private readonly IRepository _repository;
 
@@ -21,6 +21,9 @@ namespace Bubbio.Domain.Validation
         /// <returns></returns>
         public async Task<bool> IsValidAsync(ITransition @event)
         {
+            if (@event == null)
+                return true;
+
             // TODO: How about caching a set of last events in memory? Use resolver to lookup memory first.
             var lastEvent = (ITransition) await _repository.GetLastAsync(@event.BabyId, @event.EventType);
 

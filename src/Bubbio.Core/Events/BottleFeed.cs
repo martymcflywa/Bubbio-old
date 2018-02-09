@@ -5,6 +5,7 @@ namespace Bubbio.Core.Events
 {
     public class BottleFeed : ITransition
     {
+        public long SequenceId { get; set; }
         public Guid EventId { get; set; }
         public Guid BabyId { get; set; }
         public DateTimeOffset Timestamp { get; set; }

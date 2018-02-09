@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bubbio.Core;
+using Bubbio.Domain.Validation;
 using Bubbio.Persist.Mongo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,7 +51,9 @@ namespace Bubbio.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IRepository>(s => new Repository(_connectionString, _schema, _collection));
+            services.AddSingleton<IRepository>(s => new Repository(_connectionString, _schema, _collection));
+            services.AddSingleton<IValidate, TransitionValidator>();
+            services.AddSingleton<IJsonDeserialize, EventJsonDeserializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

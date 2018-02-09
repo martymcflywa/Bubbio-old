@@ -10,6 +10,9 @@ namespace Bubbio.Persist.Mongo.Maps
     [BsonKnownTypes(typeof(WeightUpdate))]
     public class WeightUpdateMap : IMongoClassMap, IMeasurement
     {
+        public long SequenceId { get; set; }
+
+        [BsonId]
         public Guid EventId { get; set; }
         public Guid BabyId { get; set; }
         public DateTimeOffset Timestamp { get; set; }

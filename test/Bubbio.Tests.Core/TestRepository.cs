@@ -6,7 +6,7 @@ using Bubbio.Core;
 using Bubbio.Core.Events;
 using Bubbio.Core.Events.Enums;
 
-namespace Bubbio.Domain.Tests.Scenarios
+namespace Bubbio.Tests.Core
 {
     public class TestRepository : IRepository
     {
