@@ -40,7 +40,17 @@ namespace Bubbio.Tests.Core
 
         public void Has(IEvent @event)
         {
-            Assert.Equal(@event, _events.SingleOrDefault(), new EventComparer());
+            Assert.Equal(@event, _events.LastOrDefault(), new RootEventComparer());
+        }
+
+        public void Has(ITransition @event)
+        {
+            Assert.Equal(@event, _events.LastOrDefault() as ITransition, new TransitionEventComparer());
+        }
+
+        public void IsWithout(IEvent @event)
+        {
+            Assert.NotEqual(@event, _events.LastOrDefault(), new RootEventComparer());
         }
 
         public void IsEmpty()
@@ -48,10 +58,13 @@ namespace Bubbio.Tests.Core
             _events.Clear();
         }
 
-        private class EventComparer : IEqualityComparer<IEvent>
+        private class RootEventComparer : IEqualityComparer<IEvent>
         {
             public bool Equals(IEvent x, IEvent y)
             {
+                if (x == null || y == null)
+                    return false;
+
                 return x.SequenceId.Equals(y.SequenceId)
                        && x.EventId.ToString().Equals(y.EventId.ToString())
                        && x.BabyId.ToString().Equals(y.BabyId.ToString())
@@ -60,6 +73,24 @@ namespace Bubbio.Tests.Core
             }
 
             public int GetHashCode(IEvent obj)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private class TransitionEventComparer : IEqualityComparer<ITransition>
+        {
+            public bool Equals(ITransition x, ITransition y)
+            {
+                return x.SequenceId.Equals(y.SequenceId)
+                       && x.EventId.ToString().Equals(y.EventId.ToString())
+                       && x.BabyId.ToString().Equals(y.BabyId.ToString())
+                       && x.EventType.Equals(y.EventType)
+                       && x.Timestamp.Equals(y.Timestamp)
+                       && x.Transition.Equals(y.Transition);
+            }
+
+            public int GetHashCode(ITransition obj)
             {
                 throw new NotImplementedException();
             }

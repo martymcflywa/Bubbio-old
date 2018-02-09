@@ -6,7 +6,7 @@ namespace Bubbio.Core.Exceptions
     public class TransitionEventException : Exception
     {
         public TransitionEventException(EventType eventType, Transition transition)
-            : base($"{eventType.ToString()} requires an existing entry opposite to {transition.ToString()}")
+            : base($"{eventType.ToString()} requires an existing event opposite to {transition.ToString()}")
         {
 
         }
