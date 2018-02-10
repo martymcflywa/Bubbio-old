@@ -36,11 +36,8 @@ namespace Bubbio.WebApi.Controllers
             {
                 try
                 {
-                    var eventType = @event.EventType;
-                    if (await _validator.IsValidAsync(@event))
-                        await _repository.InsertAsync(@event);
-//                    else
-//                        throw new TransitionEventException(eventType, asTransitionEvent.Transition);
+                    var validatedEvent = await _validator.Validate(_repository, @event);
+                    await _repository.InsertAsync(validatedEvent);
 
                     result.Value = @event;
                     result.StatusCode = (int) HttpStatusCode.OK;
