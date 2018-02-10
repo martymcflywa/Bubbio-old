@@ -23,8 +23,8 @@ namespace Bubbio.WebApi.Tests.Scenarios
 
         protected RepositoryControllerTestBase()
         {
-            _repository = new TestRepository();
-            IValidate validator = new TransitionValidator(_repository);
+            IValidate validator = new EventValidator();
+            _repository = new TestRepository(validator);
             _controller = new RepositoryController(_repository, validator);
         }
 
@@ -37,7 +37,8 @@ namespace Bubbio.WebApi.Tests.Scenarios
             {
                 await _controller.InsertEventAsync(_eventToPersist);
             }
-            catch (TransitionEventException){}
+            catch (AggregateException e) when (e.GetBaseException() is InvalidEventException){}
+            catch (InvalidEventException){}
         }
 
         protected void EventIsPersisted(IEvent @event)

@@ -5,13 +5,21 @@ using System.Threading.Tasks;
 using Bubbio.Core;
 using Bubbio.Core.Events;
 using Bubbio.Core.Events.Enums;
+using Bubbio.Core.Exceptions;
+using Bubbio.Domain.Validation;
 using Xunit;
 
 namespace Bubbio.Tests.Core
 {
-    public class TestRepository : IRepository
+    public partial class TestRepository : IRepository
     {
         private readonly List<IEvent> _events = new List<IEvent>();
+        private readonly IValidate _validator;
+
+        public TestRepository(IValidate validator)
+        {
+            _validator = validator;
+        }
 
         public Task BatchInsertAsync(IEnumerable<IEvent> events)
         {
@@ -21,7 +29,13 @@ namespace Bubbio.Tests.Core
 
         public Task InsertAsync(IEvent @event)
         {
-            _events.Add(@event);
+            try
+            {
+                _events.Add(_validator.Validate(this, @event).Result);
+            }
+            catch (AggregateException e) when (e.GetBaseException() is InvalidEventException){}
+            catch (InvalidEventException){}
+
             return Task.CompletedTask;
         }
 
@@ -36,6 +50,11 @@ namespace Bubbio.Tests.Core
             return Task.FromResult(_events
                 .Where(e => e.BabyId.Equals(babyId))
                 .LastOrDefault(e => e.EventType.Equals(eventType)));
+        }
+
+        public void AlreadyHas(IEvent @event)
+        {
+            _events.Add(@event);
         }
 
         public void Has(IEvent @event)
@@ -56,44 +75,6 @@ namespace Bubbio.Tests.Core
         public void IsEmpty()
         {
             _events.Clear();
-        }
-
-        private class RootEventComparer : IEqualityComparer<IEvent>
-        {
-            public bool Equals(IEvent x, IEvent y)
-            {
-                if (x == null || y == null)
-                    return false;
-
-                return x.SequenceId.Equals(y.SequenceId)
-                       && x.EventId.ToString().Equals(y.EventId.ToString())
-                       && x.BabyId.ToString().Equals(y.BabyId.ToString())
-                       && x.EventType.Equals(y.EventType)
-                       && x.Timestamp.Equals(y.Timestamp);
-            }
-
-            public int GetHashCode(IEvent obj)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        private class TransitionEventComparer : IEqualityComparer<ITransition>
-        {
-            public bool Equals(ITransition x, ITransition y)
-            {
-                return x.SequenceId.Equals(y.SequenceId)
-                       && x.EventId.ToString().Equals(y.EventId.ToString())
-                       && x.BabyId.ToString().Equals(y.BabyId.ToString())
-                       && x.EventType.Equals(y.EventType)
-                       && x.Timestamp.Equals(y.Timestamp)
-                       && x.Transition.Equals(y.Transition);
-            }
-
-            public int GetHashCode(ITransition obj)
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

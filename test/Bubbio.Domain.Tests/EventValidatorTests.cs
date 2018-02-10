@@ -4,14 +4,14 @@ using Xunit;
 
 namespace Bubbio.Domain.Tests
 {
-    public class TransitionValidatorTests : TransitionValidatorTestBase
+    public class EventValidatorTests : EventValidatorTestBase
     {
         [Fact]
         public void StartEventWithRelatedEndEvent()
         {
-            this.Given(_ => RepositoryHas(End))
+            this.Given(_ => RepositoryAlreadyHas(End))
                 .When(_ => EventIsValidated(Start))
-                .Then(_ => EventIsAccepted(true))
+                .Then(_ => EventIsAccepted(Start))
                 .BDDfy();
         }
 
@@ -20,34 +20,34 @@ namespace Bubbio.Domain.Tests
         {
             this.Given(_ => RepositoryIsEmpty())
                 .When(_ => EventIsValidated(Start))
-                .Then(_ => EventIsAccepted(true))
+                .Then(_ => EventIsAccepted(Start))
                 .BDDfy();
         }
 
         [Fact]
         public void StartEventWithUnrelatedEndEvent()
         {
-            this.Given(_ => RepositoryHas(UnrelatedEnd))
+            this.Given(_ => RepositoryAlreadyHas(UnrelatedEnd))
                 .When(_ => EventIsValidated(Start))
-                .Then(_ => EventIsAccepted(true))
+                .Then(_ => EventIsAccepted(Start))
                 .BDDfy();
         }
 
         [Fact]
         public void StartEventWithRelatedStartEvent()
         {
-            this.Given(_ => RepositoryHas(Start))
-                .When(_ => EventIsValidated(Start))
-                .Then(_ => EventIsAccepted(false))
+            this.Given(_ => RepositoryAlreadyHas(Start))
+                .When(_ => EventIsValidated(SecondStart))
+                .Then(_ => EventNotAccepted())
                 .BDDfy();
         }
 
         [Fact]
         public void EndEventWithRelatedStartEvent()
         {
-            this.Given(_ => RepositoryHas(Start))
+            this.Given(_ => RepositoryAlreadyHas(Start))
                 .When(_ => EventIsValidated(End))
-                .Then(_ => EventIsAccepted(true))
+                .Then(_ => EventIsAccepted(End))
                 .BDDfy();
         }
 
@@ -56,16 +56,25 @@ namespace Bubbio.Domain.Tests
         {
             this.Given(_ => RepositoryIsEmpty())
                 .When(_ => EventIsValidated(End))
-                .Then(_ => EventIsAccepted(false))
+                .Then(_ => EventNotAccepted())
                 .BDDfy();
         }
 
         [Fact]
         public void EndEventWithUnrelatedStartEvent()
         {
-            this.Given(_ => RepositoryHas(UnrelatedStart))
+            this.Given(_ => RepositoryAlreadyHas(UnrelatedStart))
                 .When(_ => EventIsValidated(End))
-                .Then(_ => EventIsAccepted(false))
+                .Then(_ => EventNotAccepted())
+                .BDDfy();
+        }
+
+        [Fact]
+        public void EndEventWithRelatedEndEvent()
+        {
+            this.Given(_ => RepositoryAlreadyHas(End))
+                .When(_ => EventIsValidated(SecondEnd))
+                .Then(_ => EventNotAccepted())
                 .BDDfy();
         }
     }

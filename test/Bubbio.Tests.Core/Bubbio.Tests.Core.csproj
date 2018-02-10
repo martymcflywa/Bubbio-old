@@ -11,6 +11,7 @@
       <Project>{E11B7D18-EF57-4FFF-9A26-D60969FCB7EB}</Project>
       <Name>Bubbio.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Bubbio.Domain\Bubbio.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="xunit.assert, Version=2.3.1.3858, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
@@ -18,6 +19,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>

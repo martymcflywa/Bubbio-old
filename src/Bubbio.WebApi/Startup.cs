@@ -52,7 +52,7 @@ namespace Bubbio.WebApi
         {
             services.AddMvc();
             services.AddSingleton<IRepository>(s => new Repository(_connectionString, _schema, _collection));
-            services.AddSingleton<IValidate, TransitionValidator>();
+            services.AddSingleton<IValidate, EventValidator>();
             services.AddSingleton<IJsonDeserialize, EventJsonDeserializer>();
         }
 
