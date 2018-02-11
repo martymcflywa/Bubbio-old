@@ -1,5 +1,5 @@
 ﻿using System;
-using Bubbio.Core.Types;
+using Bubbio.Core.Events;
 using Bubbio.Domain.Validation;
 using Xunit;
 
@@ -7,8 +7,8 @@ namespace Bubbio.Domain.Tests.Scenarios
 {
     public class BabyValidatorTestBase
     {
-        private Baby _babyPreValidation;
-        private Baby _babyPostValidation;
+        private CreateBaby _babyPreValidation;
+        private CreateBaby _babyPostValidation;
 
         protected string NamePreValidation { get; set; }
         protected string NamePostValidation { get; set; }

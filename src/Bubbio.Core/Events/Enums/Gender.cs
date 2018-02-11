@@ -1,4 +1,4 @@
-﻿namespace Bubbio.Core.Types
+﻿namespace Bubbio.Core.Events.Enums
 {
     public enum Gender
     {

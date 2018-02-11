@@ -28,6 +28,7 @@ namespace Bubbio.Persist.Mongo
 
         private void Register()
         {
+            Register<CreateBabyMap>();
             Register<SleepMap>();
             Register<BottleFeedMap>();
             Register<TummyTimeMap>();

@@ -1,15 +1,16 @@
 ﻿using System;
-using Bubbio.Core.Types;
+using Bubbio.Core.Events;
+using Bubbio.Core.Events.Enums;
 
 namespace Bubbio.Domain.Tests.Scenarios
 {
     internal sealed class BabyBuilder
     {
-        private readonly Baby _baby;
+        private readonly CreateBaby _baby;
 
         public BabyBuilder()
         {
-            _baby = new Baby
+            _baby = new CreateBaby
             {
                 BabyId = Guid.NewGuid(),
                 DateOfBirth = new DateTime(2017, 10, 17),
@@ -40,7 +41,7 @@ namespace Bubbio.Domain.Tests.Scenarios
             return this;
         }
 
-        public Baby Build()
+        public CreateBaby Build()
         {
             return _baby;
         }

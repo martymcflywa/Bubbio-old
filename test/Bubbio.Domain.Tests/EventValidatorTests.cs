@@ -7,6 +7,24 @@ namespace Bubbio.Domain.Tests
     public class EventValidatorTests : EventValidatorTestBase
     {
         [Fact]
+        public void BabyWithValidNameIsAccepted()
+        {
+            this.Given(_ => RepositoryIsEmpty())
+                .When(_ => EventIsValidated(BabyWithValidName))
+                .Then(_ => EventIsAccepted(BabyWithValidName))
+                .BDDfy();
+        }
+
+        [Fact]
+        public void BabyWithInvalidNameNotAccepted()
+        {
+            this.Given(_ => RepositoryIsEmpty())
+                .When(_ => EventIsValidated(BabyWithInvalidName))
+                .Then(_ => EventNotAccepted())
+                .BDDfy();
+        }
+
+        [Fact]
         public void StartEventWithRelatedEndEvent()
         {
             this.Given(_ => RepositoryAlreadyHas(End))

@@ -1,17 +1,17 @@
 ﻿using System;
-using Bubbio.Core.Types;
+using Bubbio.Core.Events;
 
 namespace Bubbio.Domain.Validation
 {
     public static class BabyValidatorEx
     {
-        public static Baby Validate(this Baby baby)
+        public static CreateBaby Validate(this CreateBaby baby)
         {
             return baby
                 .ValidateNames();
         }
 
-        private static Baby ValidateNames(this Baby baby)
+        private static CreateBaby ValidateNames(this CreateBaby baby)
         {
             var first = baby.Name.First;
             var middle = baby.Name.Middle;

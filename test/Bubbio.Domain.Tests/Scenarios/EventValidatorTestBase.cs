@@ -6,6 +6,8 @@ using Bubbio.Domain.Validation;
 using Bubbio.Tests.Core;
 using Xunit;
 
+using Name = Bubbio.Core.Events.Name;
+
 namespace Bubbio.Domain.Tests.Scenarios
 {
     public class EventValidatorTestBase
@@ -17,13 +19,41 @@ namespace Bubbio.Domain.Tests.Scenarios
         private readonly Guid _babyId = Guid.NewGuid();
         private readonly DateTimeOffset _timestamp = DateTimeOffset.Now;
 
-        private IEvent _validatedEvent { get; set; }
+        private IEvent ValidatedEvent { get; set; }
 
         protected EventValidatorTestBase()
         {
             _validator = new EventValidator();
             _testRepository = new TestRepository(_validator);
         }
+
+        protected CreateBaby BabyWithValidName => new CreateBaby
+        {
+            SequenceId = 1,
+            EventId = _eventId,
+            BabyId = _babyId,
+            Timestamp = _timestamp,
+            EventType = EventType.CreateBaby,
+            Name = new Name
+            {
+                First = "Damon",
+                Last = "Ponce"
+            }
+        };
+
+        protected CreateBaby BabyWithInvalidName => new CreateBaby
+        {
+            SequenceId = 1,
+            EventId = _eventId,
+            BabyId = _babyId,
+            Timestamp = _timestamp,
+            EventType = EventType.CreateBaby,
+            Name = new Name
+            {
+                First = "L33t",
+                Last = "123456"
+            }
+        };
 
         protected BottleFeed Start => new BottleFeed
         {
@@ -99,7 +129,7 @@ namespace Bubbio.Domain.Tests.Scenarios
         {
             try
             {
-                _validatedEvent = _validator.Validate(_testRepository, @event).Result;
+                ValidatedEvent = _validator.Validate(_testRepository, @event).Result;
             }
             catch (AggregateException e) when (e.GetBaseException() is InvalidEventException){}
             catch (InvalidEventException){}
@@ -107,12 +137,12 @@ namespace Bubbio.Domain.Tests.Scenarios
 
         protected void EventIsAccepted(IEvent @event)
         {
-            Assert.Equal(@event, _validatedEvent, new RootEventComparer());
+            Assert.Equal(@event, ValidatedEvent, new RootEventComparer());
         }
 
         protected void EventNotAccepted()
         {
-            Assert.Null(_validatedEvent);
+            Assert.Null(ValidatedEvent);
         }
     }
 }
