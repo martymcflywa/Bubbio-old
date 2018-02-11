@@ -16,15 +16,19 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Serilog" Version="2.6.0" />
     <PackageReference Include="SerilogTimings" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bubbio.Core\Bubbio.Core.csproj" />
     <ProjectReference Include="..\Bubbio.Domain\Bubbio.Domain.csproj" />
-    <ProjectReference Include="..\Bubbio.Persist.Mongo\Bubbio.Persist.Mongo.csproj" />
+    <ProjectReference Include="..\Bubbio.Persist.Mongo\Bubbio.Persist.Mongo.csproj">
+      <Project>{1CC7B925-C48A-46C4-B74D-5BA30B6EF36A}</Project>
+      <Name>Bubbio.Persist.Mongo</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
