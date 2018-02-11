@@ -5,3 +5,4 @@ source ./scripts/setupcover.sh
 source ./scripts/test.sh
 source ./scripts/checkcover.sh
 source ./scripts/clean.sh
+source ./scripts/cleanminicover.sh
