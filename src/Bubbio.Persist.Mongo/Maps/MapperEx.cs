@@ -12,6 +12,7 @@ namespace Bubbio.Persist.Mongo.Maps
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<IEvent, IMongoClassMap>()
+                    .Include<CreateBaby, CreateBabyMap>()
                     .Include<Sleep, SleepMap>()
                     .Include<BottleFeed, BottleFeedMap>()
                     .Include<TummyTime, TummyTimeMap>()
@@ -25,6 +26,8 @@ namespace Bubbio.Persist.Mongo.Maps
         {
             switch (@event)
             {
+                case CreateBaby _:
+                    return Mapper.Map<CreateBabyMap>(@event);
                 case Sleep _:
                     return Mapper.Map<SleepMap>(@event);
                 case BottleFeed _:

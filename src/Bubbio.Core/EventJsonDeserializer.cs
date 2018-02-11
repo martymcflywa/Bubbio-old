@@ -29,6 +29,9 @@ namespace Bubbio.Core
 
             switch (eventType)
             {
+                case EventType.CreateBaby:
+                    @event = new CreateBaby();
+                    break;
                 case EventType.Sleep:
                     @event = new Sleep();
                     break;

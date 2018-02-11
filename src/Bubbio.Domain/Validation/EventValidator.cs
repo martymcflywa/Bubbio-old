@@ -28,10 +28,27 @@ namespace Bubbio.Domain.Validation
             return !@event.EventId.Equals(Guid.Empty)
                    && !@event.BabyId.Equals(Guid.Empty)
                    && @event.Timestamp > DateTimeOffset.MinValue
-                   && await IsValidAsync(repository, @event as ITransition);
+                   && IsValidBaby(@event as CreateBaby)
+                   && await IsValidTransition(repository, @event as ITransition);
         }
 
-        private static async Task<bool> IsValidAsync(IRepository repository, ITransition @event)
+        private static bool IsValidBaby(CreateBaby baby)
+        {
+            if (baby == null)
+                return true;
+
+            var first = baby.Name.First;
+            var middle = baby.Name.Middle;
+            var last = baby.Name.Last;
+
+            baby.Name.First = first.Validate();
+            baby.Name.Middle = middle.Validate();
+            baby.Name.Last = last.Validate();
+
+            return !baby.Name.First.IsEmpty() && !baby.Name.Last.IsEmpty();
+        }
+
+        private static async Task<bool> IsValidTransition(IRepository repository, ITransition @event)
         {
             if (@event == null)
                 return true;
