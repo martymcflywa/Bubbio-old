@@ -10,6 +10,3 @@ dotnet clean --configuration Debug
 if [ -d $ARTIFACTS ]; then
     rm -rf $ARTIFACTS
 fi
-if [ -d $TOOLS ]; then
-    rm -rf $TOOLS
-fi
